@@ -12,7 +12,7 @@ import pyautogui
 from random import randrange
 
 def discordWebHook(file_path, coin, text):
-	url = "https://discord.com/api/webhooks/925791899732815933/ofAhQF6FdzoCRzs1HGBNtILu8s1KCVE4A4dXTBEBwPCI_mMQ043qX-Hw9zlBc2bAzWGB"
+	url = "discord_webhook_url"
 
 	payload={'payload_json': '{"content": ' + text + '}'}
 	files=[
@@ -25,7 +25,7 @@ def discordWebHook(file_path, coin, text):
 
 def insertDataIntoTBL(id,   symbol, name,   current_price,  market_cap, market_cap_rank,    fully_diluted_valuation,    total_volume,   high_24h,   low_24h,    price_change_24h,   price_change_percentage_24h,    market_cap_change_24h,  market_cap_change_percentage_24h,   circulating_supply, total_supply,   max_supply, ath,    ath_change_percentage,  ath_date,   atl,    atl_change_percentage,  atl_date,   roi,    last_updated,   price_change_percentage_1h_in_currency, price_change_percentage_24h_in_currency,    price_change_percentage_7d_in_currency):
 	try:
-		cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=DESKTOP-Q9EL2M0\\SQLEXPRESS;DATABASE=tempdb;UID=sa;PWD=12345')
+		cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=server_name\\SQLEXPRESS;DATABASE=tempdb;UID=sa;PWD=connection_password')
 		cursor = cnxn.cursor()
 		query_string = f'''INSERT INTO [tempdb].[dbo].[tbl_test] (id,   symbol, name,   current_price,  market_cap, market_cap_rank,    fully_diluted_valuation,    total_volume,   high_24h,   low_24h,    price_change_24h,   price_change_percentage_24h,    market_cap_change_24h,  market_cap_change_percentage_24h,   circulating_supply, total_supply,   max_supply, ath,    ath_change_percentage,  ath_date,   atl,    atl_change_percentage,  atl_date,   roi,    last_updated,   price_change_percentage_1h_in_currency, price_change_percentage_24h_in_currency,    price_change_percentage_7d_in_currency) VALUES ('{id}', '{symbol}', '{name}', {current_price},  {market_cap},   {market_cap_rank},  '{fully_diluted_valuation}',    {total_volume}, {high_24h}, {low_24h},  {price_change_24h}, {price_change_percentage_24h},  {market_cap_change_24h},    {market_cap_change_percentage_24h}, {circulating_supply},   '{total_supply}',   '{max_supply}', {ath},  {ath_change_percentage},    '{ath_date}',   {atl},  {atl_change_percentage},    '{atl_date}',   '{roi}',    '{last_updated}',   {price_change_percentage_1h_in_currency},   {price_change_percentage_24h_in_currency},  {price_change_percentage_7d_in_currency})'''
 		cursor.execute(query_string)
@@ -238,7 +238,7 @@ file_path = ''
 while 1:    
 
 	# OPEN DATABASE CONNECTION
-	cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=DESKTOP-Q9EL2M0\\SQLEXPRESS;DATABASE=tempdb;UID=sa;PWD=12345')
+	cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=server_name\\SQLEXPRESS;DATABASE=tempdb;UID=sa;PWD=connection_password')
 	cursor = cnxn.cursor()
 
 	# REMOVE HISTORICAL DATA FROM DATABASE
