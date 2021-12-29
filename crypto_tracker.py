@@ -171,7 +171,7 @@ def screenshotPlot(price_list, stoch_k, stoch_d, coin, text):
 
 	rand = str(randrange(0,1000))
 	file_name = coin+rand+'.PNG'
-	file_path = r'C:\Users\memeo\Desktop\screenshot_coins\file_name_'+coin+rand+'.PNG'
+	file_path = r'.\file_name_'+coin+rand+'.PNG'
 
 	myScreenshot.save(file_path)
 	plt.close()
